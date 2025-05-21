@@ -153,54 +153,33 @@ fun progress_callback (duration, progress)
 
 Plymouth.SetBootProgressFunction(progress_callback);
 
-#----------------------------------------- Quit --------------------------------
-
-fun quit_callback ()
-{
-  color_logo.image = Image("Quintus_X62_SXGAplus.png");
-  color_logo_image_ratio = color_logo.image.GetHeight() / color_logo.image.GetWidth();
-
-  if (screen_ratio > color_logo_image_ratio)
-  {
-    scale_factor =  Window.GetHeight() / color_logo.image.GetHeight();
-  }
-  else
-  {
-    scale_factor =  Window.GetWidth() / color_logo.image.GetWidth();
-  }
-  scaled_color_logo.image = color_logo.image.Scale(color_logo.image.GetWidth()  * scale_factor,
-                                                   color_logo.image.GetHeight() * scale_factor);
-  color_logo.sprite = Sprite(scaled_color_logo.image);
-  color_logo.opacity_angle = 0;
-  color_logo.sprite.SetOpacity (1);
-}
-
-Plymouth.SetQuitFunction(quit_callback);
-
 #----------------------------------------- Message --------------------------------
 
 message_sprites = [];
 message_sprite_count = 0;
 message_sprite_y = 10;
 
-fun display_message_callback (text)
+fun message_callback (text)
 {
-  my_image = Image.Text(text, 1, 1, 1);
-  message_sprites[message_sprite_count] = Sprite(my_image);
-  message_sprites[message_sprite_count].SetPosition(10, message_sprite_y, 10000);
-  message_sprites[message_sprite_count].text = text;
-  message_sprite_count++;
-  message_sprite_y += my_image.GetHeight();
-}
-
-fun hide_message_callback (text)
-{
-  for (i = 0; i < message_sprite_count; i++)
+  if (text != "")
     {
-      if (message_sprites[i].text == text)
-        message_sprites[i] = NULL;
+      my_image = Image.Text(text, 1, 1, 1);
+      message_sprites[message_sprite_count] = Sprite(my_image);
+      message_sprites[message_sprite_count].SetPosition(10, message_sprite_y, 10000);
+      message_sprites[message_sprite_count].text = text;
+      message_sprite_count++;
+      message_sprite_y += my_image.GetHeight();
+    }
+  else
+    {
+      for (i = 0; i < message_sprite_count; i++)
+        {
+          message_sprites[i].SetOpacity(0);
+          message_sprites[i] = NULL;
+        }
+      message_sprite_count = 0;
+      message_sprite_y = 10;
     }
 }
 
-Plymouth.SetDisplayMessageFunction (display_message_callback);
-Plymouth.SetHideMessageFunction (hide_message_callback);
+Plymouth.SetMessageFunction (message_callback);
