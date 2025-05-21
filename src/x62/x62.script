@@ -6,14 +6,14 @@ Window.SetBackgroundBottomColor(0.16, 0.25, 0.44);
 logo.image = Image("Quintus_X62_gray_SXGAplus.png");
 logo_image_ratio = logo.image.GetHeight() / logo.image.GetWidth();
 progress_bar.image[10] = Image("Quintus_X62_progress_10.png");
-progress_bar.image[20] = Image("Quintus_X62_progress_20.png");
-progress_bar.image[30] = Image("Quintus_X62_progress_30.png");
-progress_bar.image[40] = Image("Quintus_X62_progress_40.png");
-progress_bar.image[50] = Image("Quintus_X62_progress_50.png");
-progress_bar.image[60] = Image("Quintus_X62_progress_60.png");
-progress_bar.image[70] = Image("Quintus_X62_progress_70.png");
-progress_bar.image[80] = Image("Quintus_X62_progress_80.png");
-progress_bar.image[90] = Image("Quintus_X62_progress_90.png");
+progress_bar.image[20] = Image("Quintus_X62_progress_30.png");
+progress_bar.image[30] = Image("Quintus_X62_progress_50.png");
+progress_bar.image[40] = Image("Quintus_X62_progress_80.png");
+progress_bar.image[50] = Image("Quintus_X62_progress_100.png");
+progress_bar.image[60] = Image("Quintus_X62_progress_100.png");
+progress_bar.image[70] = Image("Quintus_X62_progress_100.png");
+progress_bar.image[80] = Image("Quintus_X62_progress_100.png");
+progress_bar.image[90] = Image("Quintus_X62_progress_100.png");
 progress_bar.image[100] = Image("Quintus_X62_progress_100.png");
 
 if (screen_ratio > logo_image_ratio)
